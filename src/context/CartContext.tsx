@@ -13,7 +13,7 @@ type CartContextType = {
   addToCart: (product: Product) => void;
   removeFromCart: (id: number) => void;
   totalItems: number;
-  totalPrice: number;
+  totalPrice: number; 
 };
 
 type CartProviderProps = { 
