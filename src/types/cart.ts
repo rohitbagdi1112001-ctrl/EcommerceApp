@@ -4,4 +4,4 @@
   price: number;
   images: string[];
   quantity: number;
-};
+};  
