@@ -12,7 +12,7 @@ type CartContextType = {
   cart: Cart[];    
   addToCart: (product: Product) => void;
   removeFromCart: (id: number) => void;
-  totalItems: number;
+  totalItems: number;  
   totalPrice: number; 
 };
 
