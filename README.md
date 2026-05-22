@@ -69,6 +69,12 @@ https://api.escuelajs.co/api/v1
 - URL query parameter management
 - Cypress E2E testing setup
 
+## Performance Optimization
+- Implemented Lazy Loading using React.lazy()
+- Used Suspense for fallback loading UI
+- Optimized bundle size with code splitting
+- Improved initial page load performance
+
 ---
 
 ## Installation
