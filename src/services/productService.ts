@@ -1,5 +1,5 @@
-import  BASE_URL  from '../services/api';
-
+import BASE_URL from '../services/api';
+import axios from "axios";
 // Products
 export const getProducts = async (
   categoryIds: string[]
@@ -8,9 +8,11 @@ export const getProducts = async (
   // No Filters
   if (!categoryIds.length) {
 
-    return fetch(
+    const response = await axios.get(
       `${BASE_URL}/products`
-    ).then((res) => res.json());
+    );
+
+    return response.data;
   }
 
   // Multiple Categories
@@ -18,15 +20,15 @@ export const getProducts = async (
 
     categoryIds.map((id) =>
 
-      fetch(
+      axios.get(
         `${BASE_URL}/products/?categoryId=${id}`
-      ).then((res) => res.json())
+      )
     )
   );
 
   // Merge + Remove Duplicates
   return responses
-    .flat()
+    .flatMap((res) => res.data)
     .filter(
       (product, index, self) =>
         index ===
@@ -39,15 +41,22 @@ export const getProducts = async (
 // Single Product
 export const getProductById = async (
   id: string
-) =>
+) => {
 
-  fetch(
+  const response = await axios.get(
     `${BASE_URL}/products/${id}`
-  ).then((res) => res.json());
+  );
+
+  return response.data;
+};
+
 
 // Categories
-export const getCategories = async () =>
+export const getCategories = async () => {
 
-  fetch(
+  const response = await axios.get(
     `${BASE_URL}/categories`
-  ).then((res) => res.json());
+  );
+
+  return response.data;
+};
