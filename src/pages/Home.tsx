@@ -39,7 +39,12 @@ function Home() {
 
   // Categories
   useEffect(() => {
-    getCategories().then(setCategories);
+    const fetchCategories = async () => {
+      const response = await getCategories();
+      setCategories(response.data.categories);
+    };
+
+    fetchCategories();
   }, []);
 
   // Products
